@@ -3,7 +3,7 @@
 
 function getComputerChoice() {
     // return random choice from computer between rock, paper, scissors
-    return Math.random() * 3;
+    return Math.floor(Math.random() * 3);
 }
 
 function getPlayerChoice() {
@@ -26,7 +26,7 @@ function getPlayerChoice() {
     // return player choice
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection = getPlayerChoice(), computerSelection = getComputerChoice()) {
     /*
     let playerSelection equal getPlayerChoice
     let computerSelection equal getComputerChoice
@@ -40,6 +40,24 @@ function playRound(playerSelection, computerSelection) {
 
     return string to declare winner
     */
+
+    // let computerSelection = getComputerChoice();
+    // let playerSelection = getPlayerChoice();
+
+    console.log("Computer chose: " + computerSelection);
+    console.log("Player chose: " + playerSelection);
+
+    if (playerSelection === computerSelection) {
+        console.log("Tie round!");
+        return;
+    }
+    else if (
+        (playerSelection === 0 && computerSelection === 2) || (playerSelection === 1 && computerSelection === 0) || (playerSelection === 2 && computerSelection === 1)) {
+        console.log("Player wins!");
+    }
+    else {
+        console.log("Computer wins!");
+    }
 }
 
 function game() {
