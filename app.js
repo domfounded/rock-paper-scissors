@@ -1,5 +1,9 @@
+// Rock, Paper, Scissors
+// Assuming rock = 0, paper = 1, scissors = 2
+
 function getComputerChoice() {
     // return random choice from computer between rock, paper, scissors
+    return Math.random() * 3;
 }
 
 function getPlayerChoice() {
