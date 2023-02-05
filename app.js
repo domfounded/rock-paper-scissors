@@ -9,6 +9,19 @@ function getComputerChoice() {
 function getPlayerChoice() {
     // ask player to pick betwen rock, paper, scissors
         // use prompt()
+    let playerChoice = prompt("Please choose between rock, paper, or scissors")
+
+    switch (playerChoice) {
+        case "rock":
+            return 0;
+            break;
+        case "paper":
+            return 1;
+            break;
+        case "scissors":
+            return 2;
+            break;
+    }
     // set whatever player picks to a number
     // return player choice
 }
