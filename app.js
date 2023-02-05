@@ -59,14 +59,16 @@ function playRound(playerSelection = getPlayerChoice().toUpperCase(), computerSe
 
     if (playerSelection === computerSelection) {
         console.log("Tie round!");
-        return;
+        return "Tie";
     }
     else if (
         (playerSelection === "ROCK" && computerSelection === "SCISSORS") || (playerSelection === "PAPER" && computerSelection === "ROCK") || (playerSelection === "SCISSORS" && computerSelection === "PAPER")) {
         console.log("Player wins!");
+        return "Player";
     }
     else {
         console.log("Computer wins!");
+        return "Computer";
     }
 }
 
@@ -86,4 +88,28 @@ function game() {
         else 
             scoreComp > scorePlayer ? console.log(comp wins) : console.log (player wins)
     */
+   let playerScore = 0;
+   let computerScore = 0;
+
+   for (let i = 0; i < 5; i++) {
+    if (playRound() === "Tie") {
+        playerScore++;
+        computerScore++;
+        console.log("Tie round!");
+    }
+    else if (playRound() === "Player") {
+        playerScore++;
+        console.log("Player wins this round!");
+    }
+    else {
+        computerScore++;
+        console.log("Computer wins this round!");
+    }
+   }
+   if (playerScore === computerScore) {
+    console.log("It's a tie game!");
+   }
+   else {
+    playerScore > computerScore ? console.log ("Player wins the game!") : console.log("Computer wins the game!");
+   }
 }
