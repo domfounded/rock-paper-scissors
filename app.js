@@ -3,7 +3,18 @@
 
 function getComputerChoice() {
     // return random choice from computer between rock, paper, scissors
-    return Math.floor(Math.random() * 3);
+    let computerSelection = Math.floor(Math.random() * 3);
+
+    switch (computerSelection) {
+        case 0:
+            return "Rock";
+        case 1:
+            return "Paper";
+        case 2:
+            return "Scissors"
+        default:
+            return "Error in Computer Selection"
+    }
 }
 
 function getPlayerChoice() {
