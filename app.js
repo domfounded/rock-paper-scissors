@@ -20,19 +20,18 @@ function getComputerChoice() {
 function getPlayerChoice() {
     // ask player to pick betwen rock, paper, scissors
         // use prompt()
-    let playerChoice = prompt("Please choose between rock, paper, or scissors")
+    let playerSelection = prompt("Please choose between rock, paper, or scissors.")
+    let validChoice = false;
 
-    switch (playerChoice) {
-        case "rock":
-            return 0;
-            break;
-        case "paper":
-            return 1;
-            break;
-        case "scissors":
-            return 2;
-            break;
+    while (!validChoice) {
+        if (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors") {
+            playerSelection = prompt("Invalid choice. Please choose between rock, paper, or scissors.");
+        }
+        else {
+            validChoice = true;
+        }
     }
+    return playerSelection;
     // set whatever player picks to a number
     // return player choice
 }
