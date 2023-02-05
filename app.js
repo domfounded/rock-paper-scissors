@@ -36,7 +36,7 @@ function getPlayerChoice() {
     // return player choice
 }
 
-function playRound(playerSelection = getPlayerChoice(), computerSelection = getComputerChoice()) {
+function playRound(playerSelection = getPlayerChoice().toUpperCase(), computerSelection = getComputerChoice().toUpperCase()) {
     /*
     let playerSelection equal getPlayerChoice
     let computerSelection equal getComputerChoice
@@ -62,7 +62,7 @@ function playRound(playerSelection = getPlayerChoice(), computerSelection = getC
         return;
     }
     else if (
-        (playerSelection === 0 && computerSelection === 2) || (playerSelection === 1 && computerSelection === 0) || (playerSelection === 2 && computerSelection === 1)) {
+        (playerSelection === "ROCK" && computerSelection === "SCISSORS") || (playerSelection === "PAPER" && computerSelection === "ROCK") || (playerSelection === "SCISSORS" && computerSelection === "PAPER")) {
         console.log("Player wins!");
     }
     else {
