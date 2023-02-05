@@ -28,9 +28,17 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     /* 
     play five rounds of the game
+    create scorePlayer int
+    create scoreComp int
         for loop from 0 to 5
+            play round
+                return winner
+            add point to winner
             console.log() results of round
         end loop
-        console.log() winner of game
+        if scoreComp = scorePlayer
+            console.log tie!
+        else 
+            scoreComp > scorePlayer ? console.log(comp wins) : console.log (player wins)
     */
 }
