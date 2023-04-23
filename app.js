@@ -1,6 +1,9 @@
 // Rock, Paper, Scissors
 // The Odin Project
 
+let playerScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     // Return random choice from computer between rock, paper, and scissors
 
@@ -8,15 +11,73 @@ function getComputerChoice() {
 
     switch (computerSelection) {
         case 0:
+            // console.log("Computer chose: ROCK")
             return "Rock";
         case 1:
+            // console.log("Computer chose: PAPER")
             return "Paper";
         case 2:
+            // console.log("Computer chose: SCISSORS")
             return "Scissors"
         default:
             return "Error in Computer Selection"
     }
 }
+
+function playRound(playerSelection = getPlayerChoice().toUpperCase(), computerSelection = getComputerChoice().toUpperCase()) {
+    // Plays one round of game and returns winner
+
+    // console.log("Computer chose: " + computerSelection);
+    // console.log("Player chose: " + playerSelection);
+
+    let result;
+
+    if (playerSelection === computerSelection) {
+        // console.log("Tie round!");
+        result = "Tie";
+    }
+    else if (
+        (playerSelection === "ROCK" && computerSelection === "SCISSORS") || (playerSelection === "PAPER" && computerSelection === "ROCK") || (playerSelection === "SCISSORS" && computerSelection === "PAPER")) {
+        // console.log("Player wins!");
+        playerScore++;
+        result = "Player";
+    }
+    else {
+        // console.log("Computer wins!");
+        computerScore++;
+        result = "Computer";
+    }
+
+    // Display results
+    let resultsDiv = document.getElementById("results");
+    resultsDiv.innerHTML = `Player: ${playerScore} | Computer: ${computerScore}<br/>Result: ${result}`;
+
+}
+
+function addListeners() {
+    // Get references to DOM elements
+    const btnRock = document.querySelector('#btn_rock');
+    const btnPaper = document.querySelector('#btn_paper');
+    const btnScissors = document.querySelector('#btn_scissors');
+
+    // Add event listeners
+    btnRock.addEventListener('click', () => {
+        // console.log("Player chose: ROCK");
+        playRound('ROCK');
+    });
+    btnPaper.addEventListener('click', () => { 
+        // console.log("Player chose: PAPER");
+        playRound('PAPER');
+    });
+    btnScissors.addEventListener('click', () => {
+        // console.log("Player chose: SCISSORS");
+        playRound('SCISSORS');
+    });
+}
+
+window.addEventListener('load', addListeners);
+
+/* // Removed getPlayerChoice()), game(), gameFun() to add button UI
 
 function getPlayerChoice() {
     // Asks player to pick betwen rock, paper, scissors
@@ -33,27 +94,6 @@ function getPlayerChoice() {
         }
     }
     return playerSelection;
-}
-
-function playRound(playerSelection = getPlayerChoice().toUpperCase(), computerSelection = getComputerChoice().toUpperCase()) {
-    // Plays one round of game and returns winner
-
-    // console.log("Computer chose: " + computerSelection);
-    // console.log("Player chose: " + playerSelection);
-
-    if (playerSelection === computerSelection) {
-        //console.log("Tie round!");
-        return "Tie";
-    }
-    else if (
-        (playerSelection === "ROCK" && computerSelection === "SCISSORS") || (playerSelection === "PAPER" && computerSelection === "ROCK") || (playerSelection === "SCISSORS" && computerSelection === "PAPER")) {
-        //console.log("Player wins!");
-        return "Player";
-    }
-    else {
-        //console.log("Computer wins!");
-        return "Computer";
-    }
 }
 
 function game() {
@@ -145,3 +185,5 @@ function gameFun() {
     console.log("Paper was chosen " + paperCount + " times")
     console.log("Scissors were chosen " + scissorsCount + " times")
 }
+
+*/
