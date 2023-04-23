@@ -32,6 +32,8 @@ function playRound(playerSelection = getPlayerChoice().toUpperCase(), computerSe
 
     let result;
 
+    if (playerScore === 5 || computerScore ===5) resetScores();
+
     if (playerSelection === computerSelection) {
         // console.log("Tie round!");
         result = "Tie";
@@ -40,18 +42,33 @@ function playRound(playerSelection = getPlayerChoice().toUpperCase(), computerSe
         (playerSelection === "ROCK" && computerSelection === "SCISSORS") || (playerSelection === "PAPER" && computerSelection === "ROCK") || (playerSelection === "SCISSORS" && computerSelection === "PAPER")) {
         // console.log("Player wins!");
         playerScore++;
-        result = "Player";
+        result = "Player won this round.";
     }
     else {
         // console.log("Computer wins!");
         computerScore++;
-        result = "Computer";
+        result = "Computer won this round.";
     }
 
     // Display results
     let resultsDiv = document.getElementById("results");
     resultsDiv.innerHTML = `Player: ${playerScore} | Computer: ${computerScore}<br/>Result: ${result}`;
 
+    // Show game winner after player or computer reaches a score of five. Reset scores.
+    let winnerDiv = document.getElementById("winner");
+    if(playerScore === 5) {
+        winnerDiv.innerHTML = 'Player Wins!';
+    }
+    else if (computerScore === 5) {
+        winnerDiv.innerHTML = 'Computer Wins!';
+    }
+}
+
+function resetScores() {
+    playerScore = 0;
+    computerScore = 0;
+    let winnerDiv = document.getElementById("winner");
+    winnerDiv.innerHTML = '';
 }
 
 function addListeners() {
